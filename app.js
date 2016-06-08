@@ -68,7 +68,7 @@ $(document).ready( _ => {
     function shuffle(array) {
         let rand, i = -1,
         length = array.length,
-        result = Array(length);
+        result = Array(length)
         while (++i < length) {
             rand = Math.floor(Math.random() * (i + 1))
             result[i] = result[rand]
@@ -126,7 +126,7 @@ $(document).ready( _ => {
             var elementArray = $('#drawnFishs li')
 
             $(elementArray).hide().each(function(i) {
-                $(this).delay(i * 1000).fadeIn(1500)
+                $(this).delay(i * 2000).fadeIn(1500)
             })
         }, 2000)
     })
