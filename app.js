@@ -127,7 +127,7 @@ $(document).ready( _ => {
 
             $(elementArray).hide().each(function(i) {
                 $(this).delay(i * 1000).fadeIn(1500)
-            });
+            })
         }, 2000)
     })
 })
