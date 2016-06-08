@@ -59,7 +59,7 @@ $(document).ready( _ => {
         let items = []
 
         for (var i = 0; i < arr.length; i++) {
-            items += `<li>${arr[i]}</li>`
+            items += `<li class="list-group-item">${i + 1}. ${arr[i]}</li>`
         }
 
         target.append(items)
@@ -118,7 +118,7 @@ $(document).ready( _ => {
             $('#shuffleMessage').hide()
 
             for (var i = 0; i < fishs.length; i++) {
-                toBeDrawnFishs.push(`<li>${fishs[i]}</li>`)
+                toBeDrawnFishs.push(`<li class="list-group-item">${i + 1}. ${fishs[i]}</li>`)
             }
 
             target.append(toBeDrawnFishs)
