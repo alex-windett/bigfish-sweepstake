@@ -37,30 +37,87 @@ $(document).ready( _ => {
     ]
 
     fishs = [
-        "Alex",
-        "Stephi",
-        "Natalie",
-        "Vicki",
-        "Emily W",
-        "Will",
-        "Lewis",
-        "Caitlin",
-        "Michaely",
-        "Scott",
-        "Olivia",
-        "Hannah",
-        "Aga",
-        "Sally",
-        "Rob",
+        {
+            name: "Alex",
+            team: '',
+        },
+        {
+            name: "Stephi",
+            team: '',
+        },
+        {
+            name: "Natalie",
+            team: '',
+        },
+        {
+            name: "Vicki",
+            team: '',
+        },
+        {
+            name: "Emily W",
+            team: '',
+        },
+        {
+            name: "Will",
+            team: '',
+        },
+        {
+            name: "Lewis",
+            team: '',
+        },
+        {
+            name: "Caitlin",
+            team: '',
+        },
+        {
+            name: "Michaely",
+            team: '',
+        },
+        {
+            name: "Scott",
+            team: '',
+        },
+        {
+            name: "Olivia",
+            team: '',
+        },
+        {
+            name: "Hannah",
+            team: '',
+        },
+        {
+            name: "Aga",
+            team: '',
+        },
+        {
+            name: "Sally",
+            team: '',
+        },
+        {
+            name: "Rob",
+            team: '',
+        },
     ]
 
-    function printObj(arr, htmlTargetID) {
+    function printArr(arr, htmlTargetID) {
         const target = $(`#${htmlTargetID}`)
         let items = []
 
         for (var i = 0; i < arr.length; i++) {
             items += `<li class="list-group-item">${i + 1}. ${arr[i]}</li>`
         }
+
+        target.append(items)
+    }
+
+    function printObj(obj, htmlTargetID) {
+        const target = $(`#${htmlTargetID}`)
+        let items = []
+
+        Object.keys(obj).forEach( i => {
+            console.log(i, obj[i].name )
+            items += `<li class="list-group-item">${parseInt(i) + 1}. ${obj[i].name}</li>`
+        })
 
         target.append(items)
     }
@@ -82,7 +139,7 @@ $(document).ready( _ => {
     }
 
     printObj(fishs, fishsList)
-    printObj(teams, teamsList)
+    printArr(teams, teamsList)
 
     $('#shuffle').click( _ => {
         $('#draw').show()
@@ -93,7 +150,7 @@ $(document).ready( _ => {
         fishs = shuffle(fishs)
 
         printObj(fishs, fishsList)
-        printObj(teams, teamsList)
+        printArr(teams, teamsList)
 
         $('')
     })
@@ -108,7 +165,7 @@ $(document).ready( _ => {
         setTimeout(function(){
 
             teams = shuffle(teams)
-            printObj(teams, 'drawnTeams')
+            printArr(teams, 'drawnTeams')
 
             const target = $(`#drawnFishs`)
             let toBeDrawnFishs = []
