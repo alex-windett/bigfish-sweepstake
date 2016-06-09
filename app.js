@@ -137,42 +137,53 @@ $(document).ready( _ => {
         $(`#${id}`).find('li').remove()
     }
 
+    // Print the initial arr / object
     printObj(fishs, fishsList)
     printArr(teams, teamsList)
 
     $('#shuffle').click( _ => {
         $('#draw').show()
+
+        // Delete the current appended lists
         clearList(fishsList)
         clearList(teamsList)
 
+        // Shuffle the current array / object
         teams = shuffle(teams)
         fishs = shuffle(fishs)
 
+        // Print them to screen
         printObj(fishs, fishsList)
         printArr(teams, teamsList)
     })
 
     $('#draw').click( _ => {
 
+        // Remove the li's incase a draw has already happened
         clearList(drawnTeams)
         clearList(drawnFishs)
 
+        // Set a delay to draw
         setTimeout(function(){
             $('#shuffleMessage').hide()
+
             const target        = $(`#drawnFishs`)
             let toBeDrawnFishs  = []
             teams               = shuffle(teams)
             fishs               = shuffle(fishs)
 
+            // For each fish give it a team and create an li element
             for (var i = 0; i < fishs.length; i++) {
                 fishs[i].team = teams[i]
                 toBeDrawnFishs.push(`<li class="list-group-item">${i + 1}. ${fishs[i].name} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> ${fishs[i].team}</li>`)
             }
 
+            // Display draw to page
             target.append(toBeDrawnFishs)
 
             var elementArray    = $('#drawnFishs li')
 
+            // Fade in each element
             $(elementArray).hide().each(function(i) {
                 $(this).delay(i * 2000).fadeIn(1500)
             })
