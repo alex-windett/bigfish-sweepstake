@@ -1,10 +1,10 @@
 $(document).ready( _ => {
 
     let teams, fishs
-    const teamsList = 'teams'
-    const fishsList = 'fishs'
-    const drawnTeams = 'drawnTeams'
-    const drawnFishs = 'drawnFishs'
+    const teamsList     = 'teams'
+    const fishsList     = 'fishs'
+    const drawnTeams    = 'drawnTeams'
+    const drawnFishs    = 'drawnFishs'
 
     $('#shuffleMessage').hide()
     $('#draw').hide()
@@ -21,7 +21,7 @@ $(document).ready( _ => {
         "Hungary",
         "Iceland",
         "Italy",
-        "Northern Island",
+        "Northern Ireland",
         "Poland",
         "Portugal",
         "Republic of Ireland",
@@ -157,8 +157,6 @@ $(document).ready( _ => {
         clearList(drawnTeams)
         clearList(drawnFishs)
 
-        $('#shuffleMessage').show()
-
         setTimeout(function(){
             $('#shuffleMessage').hide()
             const target        = $(`#drawnFishs`)
@@ -168,16 +166,16 @@ $(document).ready( _ => {
 
             for (var i = 0; i < fishs.length; i++) {
                 fishs[i].team = teams[i]
-                toBeDrawnFishs.push(`<li class="list-group-item">${i + 1}. ${fishs[i].name} has ${fishs[i].team}</li>`)
+                toBeDrawnFishs.push(`<li class="list-group-item">${i + 1}. ${fishs[i].name} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> ${fishs[i].team}</li>`)
             }
 
             target.append(toBeDrawnFishs)
-            
+
             var elementArray    = $('#drawnFishs li')
 
             $(elementArray).hide().each(function(i) {
                 $(this).delay(i * 2000).fadeIn(1500)
             })
-        }, 2000)
+        }, 1000)
     })
 })
